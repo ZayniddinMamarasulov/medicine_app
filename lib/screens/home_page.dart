@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:medicine_app/models/medicine_model.dart';
 import 'package:medicine_app/screens/admin_page.dart';
 import 'package:medicine_app/screens/info_page.dart';
+import 'package:medicine_app/utils/app_routes.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -50,8 +51,7 @@ class _HomePageState extends State<HomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (_) => AdminPage()));
+          Navigator.pushNamed(context, RouteName.admin);
         },
         child: Icon(Icons.add),
       ),
@@ -95,11 +95,14 @@ class _HomePageState extends State<HomePage> {
   Widget medicineItem(medicineList, index) {
     return InkWell(
       onTap: () {
-        Navigator.push(
+        Navigator.pushNamed(
           context,
-          MaterialPageRoute(
-            builder: (_) => InfoPage(medicineId: medicineList[index].id ?? 0),
-          ),
+          RouteName.info,
+          arguments: {
+            "id": medicineList[index].id,
+            "title1": "title1",
+            "title2": false
+          },
         );
       },
       child: Container(

@@ -7,8 +7,15 @@ import 'package:http/http.dart' as http;
 
 class InfoPage extends StatefulWidget {
   num medicineId;
+  String title1;
+  bool title2;
 
-  InfoPage({Key? key, required this.medicineId}) : super(key: key);
+  InfoPage({
+    Key? key,
+    required this.medicineId,
+    required this.title1,
+    required this.title2,
+  }) : super(key: key);
 
   @override
   State<InfoPage> createState() => _InfoPageState();
